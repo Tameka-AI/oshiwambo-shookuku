@@ -1,0 +1,12 @@
+# Minimal local config for `supabase start`. The hosted project is named oshiwambo-shookuku.
+project_id = "oshiwambo-shookuku"
+
+[api]
+schemas = ["public"]
+
+[db]
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]

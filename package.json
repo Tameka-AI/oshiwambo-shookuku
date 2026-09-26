@@ -1,0 +1,16 @@
+{
+  "name": "oshiwambo-shookuku",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "typecheck": "pnpm -r typecheck",
+    "seed:generate": "node --experimental-strip-types scripts/generate-seed.ts",
+    "check": "pnpm --filter @shookuku/content check"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
