@@ -61,3 +61,11 @@ The brief mentions 16 bibliography titles; the catalog holds 12. The bookstore s
 6. Section 1.14 of the homestead paper (ondunda yomatemo, the hoe store) has a heading but no text.
 7. The four missing bibliography titles.
 8. Which statuses he wants to state for the 22 entries now marked “Status not stated”.
+
+## Update — preview shop (26 September 2026)
+
+- Core book facts now come from the physical copy (colophon): Namtranslations Services cc, Windhoek, 2021; printed by Microwide Publishing Press; ISBN 9789994552320; illustrators Max Shimi and Kashindi Asuiku.
+- Core book id is now `ando-okwa-li-ihe` (URL `/books/ando-okwa-li-ihe`).
+- Bookstore still holds 12 titles. The 16-title list (“Omambo 2026”) and the duplicate Dumeni entry are waiting on that list; nothing was invented.
+- All prices are placeholder NAD preview prices.
+- Homestead map: two markers placed (main entrance, kraal). Meeting fire, kitchen and birthing hut need the book’s key to its numbered places.

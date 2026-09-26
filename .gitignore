@@ -9,3 +9,7 @@ out/
 .DS_Store
 supabase/.temp/
 supabase/.branches/
+# Book photo originals: only the optimised .webp files are published
+*.zip
+apps/web/public/media/ando/*.jpg
+*.tsbuildinfo

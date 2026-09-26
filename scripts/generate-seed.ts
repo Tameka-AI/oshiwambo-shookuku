@@ -32,16 +32,16 @@ const out: string[] = [
     )
     .join(",\n") + ";",
   "",
-  "insert into public.entries (id, collection_slug, title, title_osh, status, status_basis, summary, who, when_text, where_text, why, sources, image_path, tone, sort_order, published) values",
+  "insert into public.entries (id, collection_slug, title, title_osh, status, status_basis, summary, who, when_text, where_text, why, sources, image_path, tone, map_x, map_y, map_basis, sort_order, published) values",
   entries
     .map((e, i) =>
-      row([e.id, e.collection, e.title, e.osh, e.status, e.statusBasis, e.summary, e.who, e.when, e.where, e.why, e.sources, e.image, e.tone, i, true]),
+      row([e.id, e.collection, e.title, e.osh, e.status, e.statusBasis, e.summary, e.who, e.when, e.where, e.why, e.sources, e.image, e.tone, e.mapPoint?.x, e.mapPoint?.y, e.mapPoint?.basis, i, true]),
     )
     .join(",\n") + ";",
   "",
-  "insert into public.books (id, title, subtitle, year, publisher, language, category, blurb, featured, buy_url, sort_order) values",
+  "insert into public.books (id, title, subtitle, year, publisher, language, category, blurb, featured, buy_url, price_nad, cover_path, sort_order) values",
   books
-    .map((b, i) => row([b.id, b.title, b.subtitle, b.year, b.publisher, b.language, b.category, b.blurb, b.featured, b.buyUrl, i]))
+    .map((b, i) => row([b.id, b.title, b.subtitle, b.year, b.publisher, b.language, b.category, b.blurb, b.featured, b.buyUrl, b.priceNad, b.cover, i]))
     .join(",\n") + ";",
   "",
   "commit;",

@@ -104,7 +104,7 @@ export function ExploreClient({ entries, collections, books }: Props) {
           <ul className="mini">
             {bookHits.map((b) => (
               <li key={b.id}>
-                <Link href={`/books#${b.id}`}>
+                <Link href={`/books/${b.id}`}>
                   <span>{b.title}</span>
                   <span>{b.year}</span>
                 </Link>

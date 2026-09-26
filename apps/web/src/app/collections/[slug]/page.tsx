@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getCollection, getCollections, getEntriesFor } from "@/lib/data";
+import { getBooks, getCollection, getCollections, getEntriesFor } from "@/lib/data";
+import { HomesteadMap } from "@/components/HomesteadMap";
 import { Plate } from "@/components/Plate";
 import { StoryCard } from "@/components/StoryCard";
 import { Attribution } from "@/components/Attribution";
@@ -23,6 +24,7 @@ export default async function CollectionPage({ params }: Params) {
   const c = await getCollection(slug);
   if (!c) notFound();
   const list = await getEntriesFor(slug);
+  const map = slug === "homestead" ? (await getBooks()).find((b) => b.details?.homesteadMap)?.details?.homesteadMap : undefined;
 
   return (
     <>
@@ -39,6 +41,11 @@ export default async function CollectionPage({ params }: Params) {
           <div style={{ marginBottom: "2.5rem", maxWidth: "38rem" }}>
             <Attribution keys={[c.source]} lead="Doorways summarised from" />
           </div>
+          {map ? (
+            <div style={{ marginBottom: "4rem" }}>
+              <HomesteadMap map={map} stories={list} />
+            </div>
+          ) : null}
           <div className="grid">
             {list.map((e) => (
               <StoryCard key={e.id} entry={e} />

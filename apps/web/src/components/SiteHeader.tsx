@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@shookuku/content";
+import { BasketLink } from "./BasketLink";
 
 const links = [
   { href: "/explore", label: "Explore" },
@@ -25,6 +26,7 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <BasketLink current={path === "/cart" || path === "/checkout"} />
         </nav>
       </div>
     </header>

@@ -28,7 +28,7 @@ begin
   end;
 
   begin
-    update public.books set blurb = 'x' where id = 'core';
+    update public.books set blurb = 'x' where featured;
     raise exception 'FAIL: anon update on books succeeded';
   exception when insufficient_privilege then null;
   end;

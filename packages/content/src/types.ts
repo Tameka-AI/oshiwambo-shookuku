@@ -40,6 +40,11 @@ export type Entry = {
   bodyMd?: string;
   image?: string;
   tone: Tone;
+  /**
+   * Position on the cover drawing (07-homestead-map), in % of width/height.
+   * Only set where the drawing itself shows the place; `basis` says how it was located.
+   */
+  mapPoint?: { x: number; y: number; basis: string };
 };
 
 export type Collection = {
@@ -67,6 +72,30 @@ export type Book = {
   blurb: string;
   /** Only set when a real purchase or publisher-contact link exists */
   buyUrl?: string;
+  /** Preview price in Namibian dollars. Shown as “preview”; no payment is taken. */
+  priceNad: number;
+  /** Photograph of the real cover, when we have one */
+  cover?: string;
+  /** Facts read from the physical copy. Only for titles we have handled. */
+  details?: BookDetails;
+};
+
+export type BookPage = { src: string; alt: string; caption: string; width: number; height: number };
+
+export type BookDetails = {
+  titleOnCover: string;
+  author: string;
+  publisherFull: string;
+  place: string;
+  printer: string;
+  isbn: string;
+  illustrators: string;
+  front: BookPage;
+  back: BookPage;
+  /** Three pages at most. The rest is the book. */
+  lookInside: BookPage[];
+  colophon: BookPage;
+  homesteadMap?: BookPage;
 };
 
 /** Earth-tone plate used until the professor’s photographs arrive. */

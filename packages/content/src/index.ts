@@ -49,3 +49,14 @@ export function searchBooks(q: string) {
     normalise([b.title, b.subtitle, b.blurb, b.category, b.language].filter(Boolean).join(" ")).includes(n),
   );
 }
+
+/** Shop order: the core book, then the 2026 titles, then the rest newest first. */
+export function shopOrder<T extends { featured: boolean; year: number; title: string }>(list: T[]) {
+  const rank = (b: T) => (b.featured ? 0 : b.year === 2026 ? 1 : 2);
+  return [...list].sort((a, b) => rank(a) - rank(b) || b.year - a.year || a.title.localeCompare(b.title));
+}
+
+export function formatNad(n: number) {
+  // Deterministic (no locale APIs) so server and client render the same string.
+  return `N$${String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`;
+}

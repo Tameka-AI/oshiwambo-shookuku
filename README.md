@@ -58,7 +58,11 @@ Import the repo, set **Root Directory** to `apps/web`, framework Next.js. Add th
 | `/explore` | Search plus collection and status filters |
 | `/stories/[id]` | One doorway: who, when, where, why, teaser |
 | `/collections/[slug]` | Collection intro and its entries |
-| `/books` | Bibliography, core title featured |
+| `/books` | Preview shop: core book first, 2026 titles, bibliography. NAD preview prices |
+| `/books/[id]` | Book page. The core book has cover/back flip, three look-inside pages, colophon, homestead map |
+| `/cart` | Basket (localStorage, this browser only) |
+| `/checkout` | Name, email, phone, town, note; EFT / collect in Windhoek / card (demo, no card fields) |
+| `/order/[id]` | Thank-you: “Demonstration. No payment was taken.” |
 | `/about` | Professor, name, domain, publishing rule |
 
 ## Content rules
@@ -67,6 +71,15 @@ Import the repo, set **Root Directory** to `apps/web`, framework Next.js. Add th
 - Every entry names the source paper it comes from.
 - A status (`living`, `fading`, `historical`) appears only when a sentence in the source supports it; that sentence is stored in `statusBasis`. Everything else is `unspecified`.
 - See [docs/content-audit-2026-09-26.md](docs/content-audit-2026-09-26.md) for what was corrected and what awaits the professor.
+
+## Preview shop
+
+- Banner on every shop page: “Preview shop. No payment is taken.”
+- Prices in `packages/content/src/catalog.ts` (`priceNad`) are **placeholders**, marked “preview price” on the site.
+- The basket lives in `localStorage` (`shookuku.cart.v1`). Checkout keeps only first name, town, method and lines (`shookuku.orders.v1`); email and phone are never stored or sent.
+- No Stripe, no bank account, no WhatsApp number. Replace `buyUrl` / the checkout when the publisher confirms a real channel.
+- Core-book photographs: `apps/web/public/media/ando/*.webp` (see its README). Only title page, dedication and contents i are shown inside the book.
+- Homestead map markers appear only where the drawing itself shows the place (main entrance by the compass, kraal by the cattle). The other catalogue places wait for the book’s key to its 34 numbers.
 
 ## Author files
 

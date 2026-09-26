@@ -1,5 +1,7 @@
 import type { Book, Collection, Entry, SourceFile, SourceKey } from "./types";
 
+const ANDO = "/media/ando";
+
 /**
  * Seed catalog for Oshiwambo Shookuku.
  *
@@ -285,6 +287,11 @@ export const entries: Entry[] = [
     sources: ["homestead"],
     image: "/media/homestead.jpg",
     tone: "sand",
+    mapPoint: {
+      x: 92,
+      y: 55.5,
+      basis: "The passage on the east side of the drawing, by its compass. The source says the main gate faces east.",
+    },
   },
   {
     id: "oshoto",
@@ -349,6 +356,7 @@ export const entries: Entry[] = [
     sources: ["homestead", "ethnobotany"],
     image: "/media/kraal.jpg",
     tone: "clay",
+    mapPoint: { x: 76, y: 56, basis: "The enclosures where the drawing shows cattle and goats." },
   },
 
   // ── Marriage ─────────────────────────────────────────────────────────────
@@ -548,18 +556,55 @@ export const entries: Entry[] = [
 
 export const books: Book[] = [
   {
-    id: "core",
+    id: "ando-okwa-li-ihe",
+    priceNad: 350,
     title: "Ando okwa li ihe to shanga opo waa dhimbwe",
     subtitle: "Omuthigululwakalo gwAawambo ohela nonena",
     year: 2021,
-    publisher: "Namtranslations Services",
+    publisher: "Namtranslations Services cc",
     language: "Oshiwambo",
     category: "Culture",
     featured: true,
+    cover: `${ANDO}/08-front-cover-card.webp`,
+    details: {
+      titleOnCover: "ANDO OKWA LI IHE TO SHANGA OPO WAA DHIMBWE",
+      author: "Petrus Angula Mbenzi",
+      publisherFull: "Namtranslations Services cc",
+      place: "Windhoek",
+      printer: "Microwide Publishing Press",
+      isbn: "9789994552320",
+      illustrators: "Max Shimi and Kashindi Asuiku",
+      front: {
+        src: `${ANDO}/01-front-cover.webp`, width: 1135, height: 1600,
+        alt: "Front cover: the title over a drawn plan of a homestead with numbered places, a compass rose, and a woman carrying a clay pot.",
+        caption: "Front cover",
+      },
+      back: {
+        src: `${ANDO}/06-back-cover.webp`, width: 1200, height: 1600,
+        alt: "Back cover: title, a short description in Oshiwambo, and an illustration of a woman pounding grain beside two seated men.",
+        caption: "Back cover",
+      },
+      lookInside: [
+        { src: `${ANDO}/02-title-page.webp`, width: 1105, height: 1600, alt: "Title page with the title, subtitle, and author’s name.", caption: "Title page" },
+        { src: `${ANDO}/04-dedication.webp`, width: 1107, height: 1600, alt: "Dedication page headed Ohapu yetumba.", caption: "Ohapu yetumba — the dedication" },
+        { src: `${ANDO}/05-contents-i.webp`, width: 1094, height: 1600, alt: "First page of the contents, headed Oshikalimo.", caption: "Oshikalimo — contents, page i" },
+      ],
+      colophon: {
+        src: `${ANDO}/03-colophon.webp`, width: 1020, height: 1600,
+        alt: "Colophon page with printer, publisher, year, ISBN, and illustrators.",
+        caption: "Colophon",
+      },
+      homesteadMap: {
+        src: `${ANDO}/07-homestead-map.webp`, width: 1365, height: 1400,
+        alt: "The homestead plan from the front cover: a palisaded homestead with huts, granaries, and cattle enclosures, each place numbered.",
+        caption: "The homestead drawn on the cover",
+      },
+    },
     blurb: "The life of the Aawambo, past and present. This platform is the doorway into that book.",
   },
   {
     id: "b2026a",
+    priceNad: 320,
     title: "Omagongo omagongololamwenyo",
     subtitle: "Oshilonga shomagongo mokati kAawambo",
     year: 2026,
@@ -571,6 +616,7 @@ export const books: Book[] = [
   },
   {
     id: "b2026b",
+    priceNad: 320,
     title: "Okumita nokumitika eyono?",
     subtitle: "Onkalo yokumita nokumitika mokati kAawambo ohela nonena",
     year: 2026,
@@ -582,6 +628,7 @@ export const books: Book[] = [
   },
   {
     id: "b2026c",
+    priceNad: 320,
     title: "Omayeletumbulo gOshiwambo",
     subtitle: "A dictionary of sayings and their English equivalents",
     year: 2026,
@@ -593,6 +640,7 @@ export const books: Book[] = [
   },
   {
     id: "totem",
+    priceNad: 380,
     title: "Totemism and clan system as a world phenomenon",
     subtitle: "The case of Namibia",
     year: 2023,
@@ -604,6 +652,7 @@ export const books: Book[] = [
   },
   {
     id: "dumeni-osh",
+    priceNad: 280,
     title: "Etumo nali tu faalele",
     subtitle: "Bishop Kleopas Dumeni, 1973–2017",
     year: 2022,
@@ -615,6 +664,7 @@ export const books: Book[] = [
   },
   {
     id: "hosianna",
+    priceNad: 250,
     title: "Ombuto yokomandongo muushimba",
     subtitle: "The Hosianna congregation in Windhoek",
     year: 2022,
@@ -626,6 +676,7 @@ export const books: Book[] = [
   },
   {
     id: "liberty",
+    priceNad: 300,
     title: "A call for liberty and justice from the pulpit",
     subtitle: "The biography of Kleopas Hafeni Dumeni",
     year: 2021,
@@ -637,6 +688,7 @@ export const books: Book[] = [
   },
   {
     id: "medical",
+    priceNad: 280,
     title: "Oshiwambo–English Medical Dictionary & Phrasebook",
     year: 2019,
     publisher: "Namtranslations Services",
@@ -647,6 +699,7 @@ export const books: Book[] = [
   },
   {
     id: "quotes",
+    priceNad: 150,
     title: "Notable quotes by Bishop Kleopas Dumeni",
     year: 2016,
     publisher: "Solitaire Press",
@@ -657,6 +710,7 @@ export const books: Book[] = [
   },
   {
     id: "surnames",
+    priceNad: 220,
     title: "A Dictionary of Oshiwambo Surnames",
     year: 2007,
     publisher: "ELCIN Press",
@@ -667,6 +721,7 @@ export const books: Book[] = [
   },
   {
     id: "school",
+    priceNad: 180,
     title: "Oshindonga–English Dictionary for Primary School",
     subtitle: "With O. N. Iithete",
     year: 1995,

@@ -24,10 +24,12 @@ type EntryRow = {
   status_basis: string | null; summary: string; who: string | null; when_text: string | null;
   where_text: string | null; why: string | null; body_md: string | null; sources: string[] | null;
   image_path: string | null; tone: string | null;
+  map_x: number | null; map_y: number | null; map_basis: string | null;
 };
 type BookRow = {
   id: string; title: string; subtitle: string | null; year: number | null; publisher: string | null;
   language: string | null; category: string | null; blurb: string | null; featured: boolean; buy_url: string | null;
+  price_nad: number | null; cover_path: string | null;
 };
 
 const u = <T,>(v: T | null) => (v === null ? undefined : v);
@@ -62,6 +64,10 @@ function toEntry(r: EntryRow): Entry {
     sources: (r.sources ?? []) as SourceKey[],
     image: u(r.image_path),
     tone: (r.tone as Tone) ?? "sand",
+    mapPoint:
+      r.map_x !== null && r.map_y !== null
+        ? { x: Number(r.map_x), y: Number(r.map_y), basis: r.map_basis ?? "" }
+        : undefined,
   };
 }
 
@@ -77,6 +83,10 @@ function toBook(r: BookRow): Book {
     blurb: r.blurb ?? "",
     featured: r.featured,
     buyUrl: u(r.buy_url),
+    priceNad: r.price_nad ?? 0,
+    cover: u(r.cover_path),
+    // Page photographs and colophon facts live with the site, not the database.
+    details: catalog.books.find((b) => b.id === r.id)?.details,
   };
 }
 
@@ -100,6 +110,10 @@ export const getBooks = cache(async (): Promise<Book[]> => {
   if (error) throw error;
   return (data as BookRow[]).map(toBook);
 });
+
+export async function getBook(id: string) {
+  return (await getBooks()).find((b) => b.id === id);
+}
 
 export async function getCollection(slug: string) {
   return (await getCollections()).find((c) => c.slug === slug);

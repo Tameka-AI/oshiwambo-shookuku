@@ -68,7 +68,7 @@ export default async function StoryPage({ params }: Params) {
             <Attribution keys={entry.sources} lead="Summarised from" />
             <p>
               This is a doorway, not the full account. The complete description stays with {site.author} until he
-              releases it. <Link href="/books#core">Read it in his books</Link>.
+              releases it. <Link href="/books/ando-okwa-li-ihe">Read it in his books</Link>.
             </p>
           </div>
 
