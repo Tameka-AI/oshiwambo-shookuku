@@ -24,7 +24,7 @@ type EntryRow = {
   status_basis: string | null; summary: string; who: string | null; when_text: string | null;
   where_text: string | null; why: string | null; body_md: string | null; sources: string[] | null;
   image_path: string | null; tone: string | null;
-  map_x: number | null; map_y: number | null; map_basis: string | null;
+  map_x: number | null; map_y: number | null; map_basis: string | null; map_provisional: boolean | null;
 };
 type BookRow = {
   id: string; title: string; subtitle: string | null; year: number | null; publisher: string | null;
@@ -66,7 +66,7 @@ function toEntry(r: EntryRow): Entry {
     tone: (r.tone as Tone) ?? "sand",
     mapPoint:
       r.map_x !== null && r.map_y !== null
-        ? { x: Number(r.map_x), y: Number(r.map_y), basis: r.map_basis ?? "" }
+        ? { x: Number(r.map_x), y: Number(r.map_y), basis: r.map_basis ?? "", provisional: r.map_provisional ?? false }
         : undefined,
   };
 }

@@ -308,6 +308,12 @@ export const entries: Entry[] = [
     sources: ["homestead"],
     image: "/media/hearth.jpg",
     tone: "clay",
+    mapPoint: {
+      x: 46,
+      y: 58.5,
+      provisional: true,
+      basis: "The round enclosure (14 on the drawing) where a figure stands in an open meeting space. Provisional placement, to be confirmed with Professor Mbenzi against the book’s key.",
+    },
   },
   {
     id: "elugo",
@@ -324,6 +330,12 @@ export const entries: Entry[] = [
     sources: ["homestead"],
     image: "/media/hearth.jpg",
     tone: "ochre",
+    mapPoint: {
+      x: 25,
+      y: 48.5,
+      provisional: true,
+      basis: "The large enclosure (6) where women are shown seated at work with a pot. Provisional placement, to be confirmed with Professor Mbenzi against the book’s key.",
+    },
   },
   {
     id: "osakalwa",
@@ -340,6 +352,12 @@ export const entries: Entry[] = [
     sources: ["homestead"],
     image: "/media/hearth.jpg",
     tone: "dusk",
+    mapPoint: {
+      x: 35.5,
+      y: 67.5,
+      provisional: true,
+      basis: "The small hut (12) set apart behind its own curved passage. Provisional placement, to be confirmed with Professor Mbenzi against the book’s key.",
+    },
   },
   {
     id: "oshigunda",

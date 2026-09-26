@@ -106,6 +106,9 @@ export default async function BooksPage() {
               </li>
             ))}
           </ul>
+          <p className="fine-print" style={{ marginTop: "1.5rem" }}>
+            More titles from the author’s list are being added.
+          </p>
         </div>
       </section>
     </>

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { filterEntries, normalise, STATUS_LABEL, STATUSES, type Book, type Entry, type Status } from "@shookuku/content";
 
@@ -25,17 +24,19 @@ export function ExploreClient({ entries, collections, books }: Props) {
     router.replace(s ? `${pathname}?${s}` : pathname, { scroll: false });
   };
 
-  const results = useMemo(
-    () => filterEntries(entries, { q, collection: collection || undefined, status }),
-    [entries, q, collection, status],
-  );
+  return <ExploreView entries={entries} collections={collections} books={books} q={q} collection={collection} status={status} set={set} />;
+}
 
-  const bookHits = useMemo(() => {
-    const n = normalise(q.trim());
-    if (!n) return [];
-    return books.filter((b) => normalise([b.title, b.subtitle, b.blurb, b.category].join(" ")).includes(n));
-  }, [books, q]);
+type ViewProps = Props & { q: string; collection: string; status?: Status; set?: (key: string, value: string) => void };
 
+/**
+ * Pure view. Rendered by the server (no `set`) as the Suspense fallback, so the
+ * full list is in the HTML before hydration — no “Loading…” flash.
+ */
+export function ExploreView({ entries, collections, books, q, collection, status, set = () => {} }: ViewProps) {
+  const results = filterEntries(entries, { q, collection: collection || undefined, status });
+  const n = normalise(q.trim());
+  const bookHits = n ? books.filter((b) => normalise([b.title, b.subtitle, b.blurb, b.category].join(" ")).includes(n)) : [];
   const titleOf = new Map(collections.map((c) => [c.slug, c.title]));
   const present = new Set(entries.map((e) => e.status));
 

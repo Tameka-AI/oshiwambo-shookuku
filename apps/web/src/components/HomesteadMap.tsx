@@ -18,9 +18,9 @@ export function HomesteadMap({ map, stories }: { map: BookPage; stories: Entry[]
           <Link
             key={s.id}
             href={`/stories/${s.id}`}
-            className="hmap__pin"
+            className={`hmap__pin ${s.mapPoint!.provisional ? "hmap__pin--provisional" : ""}`}
             style={{ left: `${s.mapPoint!.x}%`, top: `${s.mapPoint!.y}%` }}
-            aria-label={`${i + 1}: ${s.title}`}
+            aria-label={`${i + 1}: ${s.title}${s.mapPoint!.provisional ? " (provisional)" : ""}`}
           >
             <span aria-hidden="true">{i + 1}</span>
           </Link>
@@ -29,15 +29,17 @@ export function HomesteadMap({ map, stories }: { map: BookPage; stories: Entry[]
       <figcaption>
         <p className="hmap__cap">
           {map.caption}, from <cite>Ando okwa li ihe to shanga opo waa dhimbwe</cite> (2021). Illustrated by Max Shimi and
-          Kashindi Asuiku. Clay markers are ours, not the book’s numbers.
+          Kashindi Asuiku. Clay markers are ours, not the book’s numbers; outlined markers are provisional until the author
+          confirms them.
         </p>
         <ol className="hmap__key">
           {placed.map((s, i) => (
             <li key={s.id}>
-              <span className="hmap__num" aria-hidden="true">{i + 1}</span>
+              <span className={`hmap__num ${s.mapPoint!.provisional ? "hmap__num--provisional" : ""}`} aria-hidden="true">{i + 1}</span>
               <div>
                 <Link href={`/stories/${s.id}`}>{s.title}</Link>
                 {s.osh ? <em className="osh"> {s.osh}</em> : null}
+                {s.mapPoint!.provisional ? <span className="tag">Provisional</span> : null}
                 <small>{s.mapPoint!.basis}</small>
               </div>
             </li>

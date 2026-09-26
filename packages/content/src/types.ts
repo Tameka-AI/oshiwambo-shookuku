@@ -44,7 +44,7 @@ export type Entry = {
    * Position on the cover drawing (07-homestead-map), in % of width/height.
    * Only set where the drawing itself shows the place; `basis` says how it was located.
    */
-  mapPoint?: { x: number; y: number; basis: string };
+  mapPoint?: { x: number; y: number; basis: string; provisional?: boolean };
 };
 
 export type Collection = {

@@ -70,7 +70,7 @@ Import the repo, set **Root Directory** to `apps/web`, framework Next.js. Add th
 - The site shows short, attributed doorways. Full procedures stay in the author files until Professor Mbenzi releases them.
 - Every entry names the source paper it comes from.
 - A status (`living`, `fading`, `historical`) appears only when a sentence in the source supports it; that sentence is stored in `statusBasis`. Everything else is `unspecified`.
-- See [docs/content-audit-2026-09-26.md](docs/content-audit-2026-09-26.md) for what was corrected and what awaits the professor.
+- See [docs/content-audit-2026-09-26.md](docs/content-audit-2026-09-26.md) for what was corrected, and [docs/pending-confirmation.md](docs/pending-confirmation.md) for provisional decisions awaiting the professor.
 
 ## Preview shop
 
@@ -79,7 +79,7 @@ Import the repo, set **Root Directory** to `apps/web`, framework Next.js. Add th
 - The basket lives in `localStorage` (`shookuku.cart.v1`). Checkout keeps only first name, town, method and lines (`shookuku.orders.v1`); email and phone are never stored or sent.
 - No Stripe, no bank account, no WhatsApp number. Replace `buyUrl` / the checkout when the publisher confirms a real channel.
 - Core-book photographs: `apps/web/public/media/ando/*.webp` (see its README). Only title page, dedication and contents i are shown inside the book.
-- Homestead map markers appear only where the drawing itself shows the place (main entrance by the compass, kraal by the cattle). The other catalogue places wait for the book’s key to its 34 numbers.
+- Homestead map: five markers. Entrance and kraal are reasoned from the drawing; meeting fire, kitchen and birthing hut are provisional (outlined) until the professor confirms them.
 
 ## Author files
 

@@ -32,10 +32,10 @@ const out: string[] = [
     )
     .join(",\n") + ";",
   "",
-  "insert into public.entries (id, collection_slug, title, title_osh, status, status_basis, summary, who, when_text, where_text, why, sources, image_path, tone, map_x, map_y, map_basis, sort_order, published) values",
+  "insert into public.entries (id, collection_slug, title, title_osh, status, status_basis, summary, who, when_text, where_text, why, sources, image_path, tone, map_x, map_y, map_basis, map_provisional, sort_order, published) values",
   entries
     .map((e, i) =>
-      row([e.id, e.collection, e.title, e.osh, e.status, e.statusBasis, e.summary, e.who, e.when, e.where, e.why, e.sources, e.image, e.tone, e.mapPoint?.x, e.mapPoint?.y, e.mapPoint?.basis, i, true]),
+      row([e.id, e.collection, e.title, e.osh, e.status, e.statusBasis, e.summary, e.who, e.when, e.where, e.why, e.sources, e.image, e.tone, e.mapPoint?.x, e.mapPoint?.y, e.mapPoint?.basis, e.mapPoint?.provisional ?? false, i, true]),
     )
     .join(",\n") + ";",
   "",

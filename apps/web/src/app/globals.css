@@ -448,3 +448,7 @@ a.plain:hover { text-decoration: underline; }
 .cover b { overflow-wrap: anywhere; hyphens: auto; }
 .shelf .btn, .btn--quiet { background: transparent; color: var(--ink); border-color: var(--rule); padding: 0.45rem 0.9rem; font-size: 0.85rem; }
 .shelf .btn:hover, .btn--quiet:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.hmap__pin--provisional { background: rgb(244 239 230 / 0.92); color: var(--clay); border: 2px dashed var(--clay); }
+.hmap__pin--provisional:hover, .hmap__pin--provisional:focus-visible { color: var(--clay); }
+.hmap__num--provisional { background: transparent; color: var(--clay); border: 1.5px dashed var(--clay); }
+.tag { display: inline-block; margin-left: 0.5rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); border: 1px solid currentColor; padding: 0.05rem 0.4rem; vertical-align: 0.15em; }

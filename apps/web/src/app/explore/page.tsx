@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getBooks, getCollections, getEntries } from "@/lib/data";
-import { ExploreClient } from "./ExploreClient";
+import { ExploreClient, ExploreView } from "./ExploreClient";
 
 export const metadata: Metadata = {
   title: "Explore",
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 export default async function ExplorePage() {
   const [entries, collections, books] = await Promise.all([getEntries(), getCollections(), getBooks()]);
+  const shortCollections = collections.map((c) => ({ slug: c.slug, title: c.title }));
   return (
     <>
       <header className="wrap page-head">
@@ -21,12 +22,8 @@ export default async function ExplorePage() {
         </p>
       </header>
       <div className="wrap">
-        <Suspense fallback={<p className="count">Loading…</p>}>
-          <ExploreClient
-            entries={entries}
-            collections={collections.map((c) => ({ slug: c.slug, title: c.title }))}
-            books={books}
-          />
+        <Suspense fallback={<ExploreView entries={entries} collections={shortCollections} books={books} q="" collection="" />}>
+          <ExploreClient entries={entries} collections={shortCollections} books={books} />
         </Suspense>
       </div>
     </>
